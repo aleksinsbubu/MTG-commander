@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card-detail">
+
+    <img src="{{ card['image'] }}" >
+
+    <div class="card-info">
+
+
+        <h1>{{ card['name'] }}</h1>
+
+        <a class="btn" href="/cards/edit/{{ card['id'] }}">Edit</a>
+        <a class="btn btn-danger" href="/cards/delete/{{ card['id'] }}">Delete</a>
+
+        <p><strong>Set:</strong> {{ card['set_name'] }}</p>
+
+        <p><strong>Type:</strong> {{ card['type'] }}</p>
+
+        <p>
+            <strong>Mana Cost:</strong>
+            {{ card['mana_cost'] }}
+        </p>
+
+        <p><strong>Colors:</strong> {{ card['colors'] }}</p>
+
+        <p><strong>Power/Toughness:</strong>
+            {{ card['power'] }}/{{ card['toughness'] }}
+        </p>
+
+        <p><strong>Description:</strong></p>
+        <p>{{ card['description'] }}</p>
+
+        <h3>Abilities</h3>
+
+        <ul>
+            {% for ability in abilities %}
+            <li>{{ ability['name'] }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Formats</h3>
+
+        <ul>
+            {% for format in formats %}
+            <li>{{ format['name'] }}</li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="home-container">
+
+    <h1>Magic: The Gathering Commander Archive</h1>
+
+    <p class="subtitle">
+        Browse sets, cards, and abilities. Build and manage your MTG collection.
+    </p>
+
+    <div class="home-grid">
+
+        <a class="home-card" href="/sets">Sets</a>
+        <a class="home-card" href="/cards">Cards</a>
+        <a class="home-card" href="/abilities">Abilities</a>
+
+    </div>
+
+    <div class="cheatsheet">
+
+        <h2>Mana Cost Cheatsheet</h2>
+
+        <p>Use standard MTG notation:</p>
+
+        <ul>
+            <li><b>W</b> = White</li>
+            <li><b>U</b> = Blue</li>
+            <li><b>B</b> = Black</li>
+            <li><b>R</b> = Red</li>
+            <li><b>G</b> = Green</li>
+        </ul>
+
+        <p>Examples:</p>
+
+        <ul>
+            <li><b>3GG</b> = 3 generic + 2 green</li>
+            <li><b>2BG</b> = 2 generic + black + green</li>
+            <li><b>WU</b> = white + blue</li>
+        </ul>
+
+    </div>
+
+</div>
+
+{% endblock %}

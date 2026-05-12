@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Delete Ability</h1>
+
+<p class="confirm-text">
+
+Are you sure you want to delete:
+
+<strong>{{ ability['name'] }}</strong>?
+
+</p>
+
+<form method="POST">
+
+    <button class="btn btn-danger">
+        Yes, Delete
+    </button>
+
+    <a class="btn" href="/abilities">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

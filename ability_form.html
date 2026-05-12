@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+{% if ability %}
+    Edit Ability
+{% else %}
+    Add Ability
+{% endif %}
+
+</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="name"
+
+        placeholder="Ability Name"
+
+        value="{{ ability['name'] if ability else '' }}"
+    >
+
+    <textarea
+        name="description"
+        placeholder="Description"
+    >{{ ability['description'] if ability else '' }}</textarea>
+
+    <button type="submit">
+        Save
+    </button>
+
+</form>
+
+{% endblock %}

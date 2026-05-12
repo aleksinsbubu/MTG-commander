@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Add Card</h1>
+
+<form method="POST" class="card-form">
+
+    <input type="text" name="name" placeholder="Card Name" required>
+
+    <input type="text" name="mana_cost" placeholder="Mana Cost">
+
+    <input type="text" name="colors" placeholder="Colors">
+
+    <input type="text" name="type" placeholder="Type">
+
+    <input type="number" name="power" placeholder="Power">
+
+    <input type="number" name="toughness" placeholder="Toughness">
+
+    <textarea name="description" placeholder="Description"></textarea>
+
+    <input type="text" name="image" placeholder="Image URL">
+
+    <!-- SET -->
+    <h3>Set</h3>
+
+    <select name="set_id">
+
+        {% for set in sets %}
+            <option value="{{ set['id'] }}">
+                {{ set['name'] }}
+            </option>
+        {% endfor %}
+
+    </select>
+
+    <!-- ABILITIES -->
+    <h3>Abilities</h3>
+
+    <div class="checkbox-list">
+
+        {% for ability in abilities %}
+
+        <label class="checkbox-row">
+
+            <input
+                type="checkbox"
+                name="abilities"
+                value="{{ ability['id'] }}"
+            >
+
+            {{ ability['name'] }}
+
+        </label>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- FORMATS -->
+    <h3>Formats</h3>
+
+    <div class="checkbox-list">
+
+        {% for format in formats %}
+
+        <label class="checkbox-row">
+
+            <input
+                type="checkbox"
+                name="formats"
+                value="{{ format['id'] }}"
+            >
+
+            {{ format['name'] }}
+
+        </label>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="form-submit">
+        <button type="submit">
+            Add Card
+        </button>
+    </div>
+
+</form>
+
+{% endblock %}

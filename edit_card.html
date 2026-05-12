@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Edit Card</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="name"
+        value="{{ card['name'] }}"
+        required
+    >
+
+    <input
+        type="text"
+        name="mana_cost"
+        value="{{ card['mana_cost'] }}"
+    >
+
+    <input
+        type="text"
+        name="colors"
+        value="{{ card['colors'] }}"
+    >
+
+    <input
+        type="text"
+        name="type"
+        value="{{ card['type'] }}"
+    >
+
+    <input
+        type="number"
+        name="power"
+        value="{{ card['power'] }}"
+    >
+
+    <input
+        type="number"
+        name="toughness"
+        value="{{ card['toughness'] }}"
+    >
+
+    <textarea name="description">{{ card['description'] }}</textarea>
+
+    <input
+        type="text"
+        name="image"
+        value="{{ card['image'] }}"
+    >
+
+    <h3>Set</h3>
+
+    <select name="set_id">
+
+        {% for set in sets %}
+
+        <option
+            value="{{ set['id'] }}"
+            {% if set['id'] == card['set_id'] %}
+                selected
+            {% endif %}
+        >
+            {{ set['name'] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <h3>Abilities</h3>
+
+    {% for ability in abilities %}
+
+    <label>
+
+        <input
+            type="checkbox"
+            name="abilities"
+            value="{{ ability['id'] }}"
+
+            {% if ability['id'] in selected_abilities %}
+                checked
+            {% endif %}
+        >
+
+        {{ ability['name'] }}
+
+    </label>
+
+    {% endfor %}
+
+    <h3>Formats</h3>
+
+    {% for format in formats %}
+
+    <label>
+
+        <input
+            type="checkbox"
+            name="formats"
+            value="{{ format['id'] }}"
+
+            {% if format['id'] in selected_formats %}
+                checked
+            {% endif %}
+        >
+
+        {{ format['name'] }}
+
+    </label>
+
+    {% endfor %}
+
+    <button type="submit">
+        Save Changes
+    </button>
+
+</form>
+
+{% endblock %}

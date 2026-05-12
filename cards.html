@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">{{ set['name'] }}</h1>
+
+<div class="grid">
+
+{% for card in cards %}
+
+<div class="card">
+
+    <img src="{{ card['image'] }}" width="100%">
+
+    <h2>{{ card['name'] }}</h2>
+
+    <p>{{ card['type'] }}</p>
+
+    <p>
+        {{ card['power'] }}/{{ card['toughness'] }}
+    </p>
+
+    <a class="btn" href="/card/{{ card['id'] }}">
+        View Details
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

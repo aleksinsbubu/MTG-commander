@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1 class="page-title">All Cards</h1>
+
+    <a class="btn" href="/cards/add">
+        Add Card
+    </a>
+
+</div>
+
+<form method="GET" action="/cards" class="filter-bar">
+
+    <!-- COLOR FILTER -->
+    <select name="color">
+        <option value="">All Colors</option>
+        <option value="W">White</option>
+        <option value="U">Blue</option>
+        <option value="B">Black</option>
+        <option value="R">Red</option>
+        <option value="G">Green</option>
+    </select>
+
+    <!-- TYPE SEARCH -->
+    <input
+        type="text"
+        name="type"
+        placeholder="Search type (e.g. Angel, Dragon)"
+    >
+
+    <button class="btn" type="submit">
+        Filter
+    </button>
+
+</form>
+
+<div class="grid">
+
+{% for card in cards %}
+
+<div class="card">
+
+    <img src="{{ card['image'] }}">
+
+    <h2>{{ card['name'] }}</h2>
+
+    <p>{{ card['set_name'] }}</p>
+
+    <a class="btn" href="/card/{{ card['id'] }}">
+        View
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

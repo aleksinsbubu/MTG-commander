@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+
+{% if set %}
+    Edit Set
+{% else %}
+    Add Set
+{% endif %}
+
+</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Set Name"
+        value="{{ set['name'] if set else '' }}"
+    >
+
+    <textarea
+        name="description"
+        placeholder="Description"
+    >{{ set['description'] if set else '' }}</textarea>
+
+    <input
+        type="number"
+        name="release_year"
+        placeholder="Release Year"
+        value="{{ set['release_year'] if set else '' }}"
+    >
+
+    <input
+        type="text"
+        name="image"
+        placeholder="Image filename or URL"
+        value="{{ set['image'] if set else '' }}"
+    >
+
+    <select name="image_type">
+
+        <option value="local"
+        {% if set and set['image_type'] == 'local' %}
+            selected
+        {% endif %}
+        >
+            Local Image
+        </option>
+
+        <option value="url"
+        {% if set and set['image_type'] == 'url' %}
+            selected
+        {% endif %}
+        >
+            External URL
+        </option>
+
+    </select>
+
+    <button type="submit">
+        Save
+    </button>
+
+</form>
+
+{% endblock %}

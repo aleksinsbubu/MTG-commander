@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MTG Commander Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="nav-left">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+        class="logo">
+
+        <span class="title">MTG Commander Archive</span>
+
+    </div>
+
+    <div class="nav-right">
+
+        <a href="/">Home</a>
+        <a href="/sets">Sets</a>
+        <a href="/cards">Cards</a>
+        <a href="/abilities">Abilities</a>
+
+    </div>
+
+</nav>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-container">
+
+        {% for msg in messages %}
+            <div class="flash">{{ msg }}</div>
+        {% endfor %}
+
+    </div>
+  {% endif %}
+{% endwith %}
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer class="footer">
+    MTG Commander Archive © 2026
+</footer>
+
+</body>
+
+</html>

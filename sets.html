@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+
+    <h1 class="page-title">MTG Sets</h1>
+
+    <a class="btn" href="/sets/add">
+    Add Set
+</a>
+
+</div>
+
+
+<div class="grid">
+
+    {% for set in sets %}
+
+    <div class="card">
+
+        {% if set['image_type'] == 'local' %}
+
+        <img
+        src="{{ url_for(
+            'static',
+            filename='images/sets/' ~ set['image']
+        ) }}"
+        alt="{{ set['name'] }}">
+
+        {% else %}
+
+        <img
+        src="{{ set['image'] }}"
+        alt="{{ set['name'] }}">
+
+        {% endif %}
+
+        <h2>{{ set['name'] }}</h2>
+
+        <p>{{ set['release_year'] }}</p>
+
+        <p>{{ set['description'] }}</p>
+
+        <div class="actions">
+
+            <a class="btn"
+            href="/sets/{{ set['id'] }}">
+                View Cards
+            </a>
+
+            <a class="btn"
+            href="/sets/edit/{{ set['id'] }}">
+                Edit
+            </a>
+
+            <a class="btn btn-danger"
+            href="/sets/delete/{{ set['id'] }}">
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
